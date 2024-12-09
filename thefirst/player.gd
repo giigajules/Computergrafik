@@ -2,22 +2,20 @@ extends Node3D
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	print("Hello, Godot")
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var speed = 5
-	if Input.is_key_pressed(KEY_UP):
-		position.z -= speed * delta
-		print("Up")
-	if Input.is_key_pressed(KEY_DOWN):
-		position.z += speed * delta
-		print("Down")
-	if Input.is_key_pressed(KEY_LEFT):
-		position.x -= speed * delta
-		print("Left")
-	if Input.is_key_pressed(KEY_RIGHT):
-		position.x += speed * delta
-		print("Right")
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui-down")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).norma
+	if direction:																		
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
