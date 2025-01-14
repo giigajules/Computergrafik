@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://bh4hd55yo1eae"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_elwy0"]
+[ext_resource type="Script" path="res://world.gd" id="1_r2pam"]
+[ext_resource type="PackedScene" uid="uid://2jwopkcct1so" path="res://runner_tile.tscn" id="2_rc067"]
+[ext_resource type="PackedScene" uid="uid://bq38ke13sy2fj" path="res://runner_tile2.tscn" id="3_b4b2q"]
+[ext_resource type="PackedScene" uid="uid://bmskiio0oilq8" path="res://runner_tile3.tscn" id="4_8l5aw"]
+[ext_resource type="Script" path="res://losing_screen.gd" id="4_kayva"]
+[ext_resource type="PackedScene" uid="uid://0kw3y6vyu752" path="res://runner_tile4.tscn" id="5_hxngl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ubs31"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_h33f0"]
+sky_material = SubResource("ProceduralSkyMaterial_ubs31")
+
+[sub_resource type="Environment" id="Environment_admqi"]
+background_mode = 2
+sky = SubResource("Sky_h33f0")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4y3fg"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_r2pam")
+tiles = Array[PackedScene]([ExtResource("2_rc067"), ExtResource("3_b4b2q"), ExtResource("4_8l5aw"), ExtResource("5_hxngl")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_admqi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_elwy0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_4y3fg")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.336526, 0)
+
+[node name="LosingScreen" type="Label" parent="Player"]
+offset_right = 1155.0
+offset_bottom = 645.0
+text = "You died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_kayva")

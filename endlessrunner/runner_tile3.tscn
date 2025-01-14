@@ -1,0 +1,228 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmskiio0oilq8"]
+
+[ext_resource type="Script" path="res://runner_tile.gd" id="1_wd08a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rdfrw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1eo8"]
+albedo_color = Color(4.21144e-08, 0.110167, 0.176836, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tyx5t"]
+material = SubResource("StandardMaterial3D_h1eo8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68mn1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3iipn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bfhlg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdc2t"]
+albedo_color = Color(0.564706, 0.478431, 0.196078, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xh1lj"]
+material = SubResource("StandardMaterial3D_fdc2t")
+
+[node name="RunnerTile" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+script = ExtResource("1_wd08a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_rdfrw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("BoxMesh_tyx5t")
+
+[node name="Obstacle1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("BoxShape3D_68mn1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("BoxMesh_3iipn")
+
+[node name="Obstacle2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9453, 0.75, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("BoxShape3D_68mn1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("BoxMesh_3iipn")
+
+[node name="Obstacle3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99564, 0.75, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("BoxShape3D_68mn1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("BoxMesh_3iipn")
+
+[node name="Coin" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30802, 0.8, 6.45621)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30802, 0.8, 5.83778)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin2"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin2"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30802, 0.8, 5.17084)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin3"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin3"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30802, 0.8, 4.56134)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin4"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin4"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin5" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0463, 0.8, 1.33772)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin5"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin5"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin6" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0463, 0.8, 0.653102)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin6"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin6"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin7" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0463, 0.8, -0.114331)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin7"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin7"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin8" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0463, 0.8, -0.816612)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin8"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin8"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin9" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96246, 0.8, -2.65766)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin9"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin9"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin10" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96246, 0.8, -3.54659)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin10"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin10"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin11" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96246, 0.8, -4.46301)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin11"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin11"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Coin12" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96246, 0.8, -5.22608)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin12"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bfhlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin12"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -0.5, 0, 0.05, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xh1lj")
+skeleton = NodePath("../CollisionShape3D")
+
+[connection signal="body_entered" from="Obstacle1" to="." method="_on_obstacle_1_body_entered"]
+[connection signal="body_entered" from="Obstacle2" to="." method="_on_obstacle_1_body_entered"]
+[connection signal="body_entered" from="Obstacle3" to="." method="_on_obstacle_1_body_entered"]
+[connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin2" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin3" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin4" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin5" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin6" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin7" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin8" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin9" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin10" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin11" to="." method="_on_coin_body_entered"]
+[connection signal="body_entered" from="Coin12" to="." method="_on_coin_body_entered"]
